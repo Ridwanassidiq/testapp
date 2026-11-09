@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#eee8fb" />
+  <title>AR Inner Voice — Asisten Refleksi CBT</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- A-Frame + AR.js: marker-based WebAR. Camera requires HTTPS or localhost. -->
+  <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.7/aframe/build/aframe-ar.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" data-view-link="dashboard" aria-label="Inner Voice beranda">
+      <span class="brand-mark">✳</span>
+      <span>INNER <b>VOICE</b><small>RUANG REFLEKSI DIRI</small></span>
+    </a>
+    <nav class="main-nav" aria-label="Navigasi utama">
+      <button class="nav-item active" data-view="dashboard"><span>⌂</span> Beranda</button>
+      <button class="nav-item" data-view="session"><span>◉</span> Refleksi</button>
+      <button class="nav-item" data-view="journal"><span>▤</span> Jurnal</button>
+    </nav>
+    <div class="top-right"><span class="status-dot"></span><span>Ruang pribadimu</span><span class="profile-mark" aria-hidden="true">✦</span></div>
+  </header>
+
+  <main class="layout">
+    <section class="content">
+      <section id="dashboardView">
+        <div class="dashboard-welcome">
+          <div class="welcome-copy">
+            <div class="eyebrow"><span class="eyebrow-dot"></span> RUANG TENANGMU</div>
+            <h1>Halo, teman <span class="wave">✦</span><br><span class="welcome-question">bagaimana perasaanmu hari ini?</span></h1>
+            <p>Setiap langkah kecil untuk memahami diri layak dihargai. Mari mulai dari apa yang kamu rasakan.</p>
+            <button class="btn btn-primary welcome-cta" data-view-link="session">Mulai refleksi <span>→</span></button>
+          </div>
+          <div class="welcome-art" aria-hidden="true">
+            <div class="brain-glow"></div>
+            <svg class="brain-illustration" viewBox="0 0 240 190" role="presentation">
+              <defs>
+                <linearGradient id="brainFill" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f8f2ff"/><stop offset=".48" stop-color="#c5a9ee"/><stop offset="1" stop-color="#9270d3"/></linearGradient>
+                <filter id="brainShadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="12" stdDeviation="9" flood-color="#8465ba" flood-opacity=".28"/></filter>
+              </defs>
+              <g filter="url(#brainShadow)" stroke="#ab8bdd" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path fill="url(#brainFill)" d="M119 39c-9-17-31-22-46-10-13-7-31 1-32 17-17 3-23 23-13 36-11 13-7 32 7 39-4 18 10 32 27 30 8 15 27 18 40 6 6 11 22 14 31 4V53c-3-7-8-12-14-14Z"/>
+                <path fill="url(#brainFill)" d="M121 39c10-17 31-22 46-10 14-7 31 1 32 17 17 3 23 23 13 36 11 13 7 32-7 39 4 18-10 32-27 30-8 15-27 18-40 6-6 11-22 14-31 4V53c3-7 8-12 14-14Z"/>
+                <path fill="none" d="M119 42c-11 7-11 17-4 24-10 7-8 19 1 24-8 8-7 18 2 24-8 8-6 18 1 24-5 7-4 14 2 20M122 44c10 6 12 16 6 23 10 7 9 18 0 24 9 8 8 18 0 24 8 8 7 18 0 25 6 7 4 14-3 19M73 40c-5 9-2 17 7 21-8 8-6 17 3 22-7 8-5 17 4 22M167 40c5 9 2 17-7 21 8 8 6 17-3 22 7 8 5 17-4 22M44 76c10-5 18-1 20 9-9 5-11 13-5 21M198 76c-10-5-18-1-20 9 9 5 11 13 5 21M65 130c10-6 19-2 21 8M178 130c-10-6-19-2-21 8"/>
+              </g>
+            </svg>
+            <span class="art-star star-a">✦</span><span class="art-star star-b">✧</span>
+            <div class="art-note">Tarik napas.<br>Kamu sudah sampai di sini.</div>
+          </div>
+          <div class="welcome-stat"><span class="stat-icon">◎</span><small>LANGKAH REFLEKSI</small><strong>6</strong><span>tahap untuk mengenali diri</span></div>
+        </div>
+
+        <div class="dashboard-grid dashboard-top-grid">
+          <article class="dash-card mood-card">
+            <div class="card-heading"><div><span class="card-kicker">CHECK-IN TERAKHIR</span><h2 id="lastMoodTitle">Mulai dari perasaanmu</h2></div><span class="card-icon">☼</span></div>
+            <p id="lastMoodText">Belum ada check-in tersimpan. Pilih waktu yang nyaman untuk memulai.</p>
+            <button class="text-link" data-view-link="session">Cek perasaanmu <span>→</span></button>
+            <div class="mood-decoration" aria-hidden="true">☁</div>
+          </article>
+          <article class="dash-card sessions-card">
+            <div class="card-heading"><div><span class="card-kicker">CATATAN PRIBADI</span><h2>Jurnal refleksi</h2></div><span class="card-icon">▤</span></div>
+            <div class="session-count"><strong id="sessionCount">0</strong><span>sesi<br>tersimpan</span></div>
+            <button class="text-link" data-view-link="journal">Lihat jurnal <span>→</span></button>
+          </article>
+          <article class="dash-card trend-card" id="progressPanel">
+            <div class="card-heading"><div><span class="card-kicker">PERJALANANMU</span><h2>Waktu untuk refleksi</h2><p>7 hari terakhir</p></div><span class="trend-badge">PRIVAT</span></div>
+            <div class="chart-wrap">
+              <svg class="trend-chart" viewBox="0 0 620 150" preserveAspectRatio="none" role="img" aria-label="Grafik jumlah sesi refleksi selama tujuh hari terakhir">
+                <defs><linearGradient id="chartArea" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#a98ae8" stop-opacity=".3"/><stop offset="1" stop-color="#a98ae8" stop-opacity=".02"/></linearGradient></defs>
+                <path class="chart-area" id="chartAreaPath" d="M0 126 C45 124 48 110 90 112 S145 94 178 101 S230 78 265 88 S320 68 354 79 S410 48 444 61 S505 40 532 49 S585 24 620 30 V150 H0Z"/>
+                <path class="chart-line" id="chartLinePath" d="M0 126 C45 124 48 110 90 112 S145 94 178 101 S230 78 265 88 S320 68 354 79 S410 48 444 61 S505 40 532 49 S585 24 620 30"/>
+                <circle class="chart-point" cx="532" cy="49" r="5"/>
+              </svg>
+              <div class="chart-days"><span>Sen</span><span>Sel</span><span>Rab</span><span>Kam</span><span>Jum</span><span>Sab</span><span>Min</span></div>
+            </div>
+            <p class="chart-caption" id="chartCaption">Setiap refleksi adalah kemajuan kecil.</p>
+          </article>
+        </div>
+
+        <div class="dashboard-grid dashboard-bottom-grid">
+          <article class="dash-card recent-card">
+            <div class="card-heading"><div><span class="card-kicker">RUANG PRIBADIMU</span><h2>Catatan terbaru</h2></div><button class="mini-button" data-view-link="journal" aria-label="Buka semua jurnal">↗</button></div>
+            <div id="recentSessionList" class="recent-session-list"><div class="empty-note">Belum ada catatan. Sesi refleksimu yang tersimpan akan muncul di sini.</div></div>
+          </article>
+          <article class="dash-card path-card">
+            <div class="card-heading"><div><span class="card-kicker">JALUR REFLEKSI</span><h2>Pelan-pelan, satu langkah</h2></div><span class="path-percent">6</span></div>
+            <p>Ruang refleksi terpandu membantumu melihat situasi, pikiran, dan perspektif baru dengan lebih jernih.</p>
+            <div class="path-track"><span></span></div>
+            <div class="path-meta"><span>6 langkah lembut</span><span>sesuai ritmemu</span></div>
+            <button class="btn btn-primary path-button" data-view-link="session">Lanjutkan refleksi <span>→</span></button>
+          </article>
+        </div>
+        <p class="dashboard-disclaimer">Ruang ini adalah media refleksi dan bukan layanan darurat, diagnosis, atau pengganti konselor.</p>
+      </section>
+
+      <section id="sessionView" class="hidden">
+        <div class="hero">
+          <div class="hero-copy">
+            <div class="eyebrow"><span class="eyebrow-dot"></span> RUANG REFLEKSI • CBT</div>
+            <h1>Pelan-pelan memahami diri,<br><em>membuka sudut pandang baru.</em></h1>
+            <p>Luangkan waktu untuk mengenali perasaan dan pikiranmu. Ruang ini membantumu berefleksi dengan terstruktur—tanpa menghakimi dan tanpa harus buru-buru.</p>
+            <div class="hero-points" aria-label="Tentang ruang refleksi">
+              <span><b>06</b> langkah terpandu</span>
+              <span><i></i> Privat di perangkatmu</span>
+            </div>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="hero-orb"><span>✳</span></div>
+            <span class="art-spark spark-one">✦</span><span class="art-spark spark-two">✧</span>
+            <span class="art-caption">Jeda sejenak<br>untuk dirimu</span>
+          </div>
+        </div>
+
+        <div class="progress-wrap">
+          <div class="progress-meta"><span id="stepLabel">LANGKAH 1 DARI 6</span><span id="progressPercent">17%</span></div>
+          <div class="progress-track"><div id="progressBar"></div></div>
+          <div class="step-names"><span class="current">Check-in</span><span>Situasi</span><span>Pikiran</span><span>Evaluasi</span><span>Alternatif</span><span>Rangkuman</span></div>
+        </div>
+
+        <div class="panel" id="wizard">
+          <div class="panel-kicker" id="panelKicker">MULAI DARI DIRIMU</div>
+          <div id="stepContent"></div>
+          <div class="panel-actions">
+            <button class="btn btn-quiet" id="backBtn" disabled>Kembali</button>
+            <button class="btn btn-primary" id="nextBtn">Mulai refleksi <span>→</span></button>
+          </div>
+          <p class="helper">Aplikasi ini merupakan media pendukung, bukan layanan darurat, diagnosis, atau pengganti konselor.</p>
+        </div>
+      </section>
+
+      <section id="journalView" class="hidden">
+        <div class="page-heading"><div class="eyebrow">RIWAYAT PRIBADI</div><h1>Jurnal refleksi</h1><p>Ringkasan sesi yang tersimpan pada browser/perangkat ini.</p></div>
+        <div id="journalList" class="journal-list"></div>
+        <button class="btn btn-quiet" id="backToSession">← Kembali ke sesi</button>
+      </section>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
