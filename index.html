@@ -1,0 +1,686 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sambalaku Nusantara</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #000;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        overflow-x: hidden;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* HERO IMAGE */
+      .hero-image {
+        width: 100%;
+        max-width: 520px;
+      }
+
+      /* PRODUCT IMAGE */
+      .product-image {
+        height: 260px;
+        object-fit: cover;
+        object-position: center;
+        margin-top: 1rem;
+      }
+
+      /* RESPONSIVE TABLET */
+      @media (max-width: 1024px) {
+        h1 {
+          font-size: 4rem !important;
+          line-height: 1.1 !important;
+        }
+
+        h2 {
+          font-size: 2.5rem !important;
+        }
+
+        .max-w-7xl {
+          padding-left: 2rem;
+          padding-right: 2rem;
+        }
+
+        .grid.md\\:grid-cols-3 {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .grid.lg\\:grid-cols-2 {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-image {
+          max-width: 450px;
+          margin-top: 2rem;
+        }
+
+      }
+
+      /* RESPONSIVE MOBILE */
+      @media (max-width: 768px) {
+        body {
+          font-size: 14px;
+        }
+
+        section {
+          padding-top: 4rem !important;
+          padding-bottom: 4rem !important;
+        }
+
+        h1 {
+          font-size: 2.8rem !important;
+          text-align: center;
+          line-height: 1.1 !important;
+        }
+
+        h2 {
+          font-size: 2rem !important;
+          text-align: center;
+        }
+
+        h3 {
+          font-size: 1.3rem !important;
+        }
+
+        p {
+          font-size: 0.95rem !important;
+          line-height: 1.7 !important;
+        }
+
+        /* HERO */
+        .lg\\:grid-cols-2 {
+          grid-template-columns: 1fr !important;
+          text-align: center;
+        }
+
+        .flex.flex-wrap.gap-4.mb-8 {
+          justify-content: center;
+        }
+
+        /* BUTTON */
+        a,
+        button {
+          width: 100%;
+          text-align: center;
+          justify-content: center;
+        }
+
+        /* CARD */
+        .grid.md\\:grid-cols-3 {
+          grid-template-columns: 1fr !important;
+        }
+
+        .grid.grid-cols-2.md\\:grid-cols-4 {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        /* FORM */
+        input {
+          font-size: 16px !important;
+        }
+
+        /* PRODUCT IMAGE */
+        .product-image {
+         
+          object-fit: cover;
+          object-position: center;
+        }
+
+        /* HERO IMAGE */
+        .hero-image {
+          max-width: 100%;
+          margin-top: 2rem;
+        }
+
+        /* RESIZE SECTION */
+        .px-6 {
+          padding-left: 1rem !important;
+          padding-right: 1rem !important;
+        }
+
+        .p-8 {
+          padding: 1.5rem !important;
+        }
+
+        .rounded-\\[2rem\\] {
+          border-radius: 1.5rem !important;
+        }
+      }
+
+      /* RESPONSIVE HP KECIL */
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 2.2rem !important;
+        }
+
+        h2 {
+          font-size: 1.6rem !important;
+        }
+
+        p {
+          font-size: 0.9rem !important;
+        }
+
+        .grid.grid-cols-2.md\\:grid-cols-4 {
+          grid-template-columns: 1fr;
+        }
+
+        .inline-block.bg-red-600,
+        .inline-block.bg-yellow-400 {
+          font-size: 0.7rem !important;
+          padding: 0.5rem 1rem !important;
+        }
+
+        .text-lg {
+          font-size: 1rem !important;
+        }
+
+        .text-5xl {
+          font-size: 2.2rem !important;
+        }
+
+        .py-16 {
+          padding-bottom: 3rem !important;
+        }
+
+        .py-20 {
+          padding-top: 4rem !important;
+          padding-bottom: 4rem !important;
+        }
+
+      }
+      /* HERO MOBILE FULL */
+@media (max-width: 1024px) {
+  .hero-wrapper {
+    width: 100%;
+  }
+
+  .hero-image {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 2rem;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  /* BADGE */
+  .hero-badge {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    font-size: 1rem !important;
+    padding: 1rem 1.2rem !important;
+    border-radius: 999px;
+  }
+
+  /* HERO IMAGE */
+  .hero-wrapper {
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  .hero-image {
+    width: 100% !important;
+    max-width: 100% !important;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 2rem;
+  }
+}
+
+/* HP KECIL */
+@media (max-width: 480px) {
+  .hero-badge {
+    font-size: 0.95rem !important;
+    line-height: 1.5;
+    padding: 1rem !important;
+  }
+
+  .hero-image {
+    height: 100% !important;
+    width: 100% !important;
+  }
+}
+    </style>
+  </head>
+
+  <body class="bg-black text-white">
+    <!-- HERO -->
+    <section class="relative overflow-hidden border-b-4 border-red-600">
+      <div
+        class="absolute inset-0 bg-gradient-to-br from-red-950 via-black to-yellow-950 opacity-90"
+      ></div>
+
+      <div
+        class="relative max-w-7xl mx-auto px-6 py-0 lg:py-16 grid lg:grid-cols-2 gap-10 items-center""
+      >
+        <!-- LEFT -->
+        <div>
+          <div
+  class="hero-badge inline-block bg-red-600 text-white px-4 py-2 rounded-full text-sm font-bold mb-4 shadow-lg"
+>
+            🔥 PEDASNYA NAMPOL, RASANYA BIKIN NAGIH!
+          </div>
+
+          <h1 class="text-5xl md:text-7xl font-black leading-tight mb-6">
+            <span class="text-white">Sambalaku</span>
+            <br />
+            <span class="text-yellow-400">Nusantara</span>
+          </h1>
+
+          <p class="text-lg text-gray-300 mb-8 leading-relaxed">
+            Sambal homemade khas Nusantara dengan cita rasa pedas autentik,
+            dibuat dari bahan pilihan berkualitas untuk menemani setiap hidangan
+            Anda.
+          </p>
+
+          <div class="flex flex-wrap gap-4 mb-8">
+            <!-- BUTTON ORDER -->
+            <a
+              href="https://id.shp.ee/3zVKxDph"
+              target="_blank"
+              class="bg-red-600 hover:bg-red-700 px-6 py-3 rounded-2xl text-lg font-bold shadow-xl transition-all inline-block"
+            >
+              Order Sekarang
+            </a>
+
+            <!-- BUTTON JOIN RESELLER -->
+            <a
+              href="#reseller"
+              class="border border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black px-6 py-3 rounded-2xl text-lg font-bold transition-all inline-block"
+            >
+              Join Reseller
+            </a>
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+            <div
+              class="bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl p-4 text-center text-sm font-semibold"
+            >
+              🌶 Pedas Juara
+            </div>
+
+            <div
+              class="bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl p-4 text-center text-sm font-semibold"
+            >
+              🥄 Homemade
+            </div>
+
+            <div
+              class="bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl p-4 text-center text-sm font-semibold"
+            >
+              📦 Packing Aman
+            </div>
+
+            <div
+              class="bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl p-4 text-center text-sm font-semibold"
+            >
+              🔥 Produk berkualitas
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="hero-wrapper relative flex justify-center">
+          <div
+            class="absolute w-100 h-100 bg-red-600 blur-3xl opacity-30 rounded-full"
+          ></div>
+
+          <img
+            src="baner landing page.png"
+            class="hero-image relative rounded-[2rem] shadow-2xl border-4 border-red-600 w-full h-auto object-cover"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="max-w-7xl mx-auto px-6 py-20">
+      <div class="text-center mb-14">
+        <h2 class="text-4xl font-black text-yellow-400 mb-4">Tentang Brand</h2>
+
+        <p class="text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          Sambalaku Nusantara hadir untuk menghadirkan sambal khas Indonesia
+          dengan rasa autentik, kualitas premium, dan sensasi pedas yang bikin
+          pelanggan ketagihan.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div
+          class="bg-gradient-to-b from-red-900/40 to-black border border-red-700 rounded-3xl p-8 shadow-xl hover:-translate-y-3 hover:scale-105 hover:shadow-red-500/40 transition-all duration-500"
+        >
+          <div class="text-5xl mb-4">🥄</div>
+
+          <h3 class="text-2xl font-bold text-yellow-400 mb-3">100% Homemade</h3>
+
+          <p class="text-gray-300">
+            Diproduksi setiap hari dengan bahan segar pilihan.
+          </p>
+        </div>
+
+        <div
+          class="bg-gradient-to-b from-red-900/40 to-black border border-red-700 rounded-3xl p-8 shadow-xl hover:-translate-y-3 hover:scale-105 hover:shadow-red-500/40 transition-all duration-500"
+        >
+          <div class="text-5xl mb-4">🌶</div>
+
+          <h3 class="text-2xl font-bold text-yellow-400 mb-3">
+            Pedas Bikin Nagih
+          </h3>
+
+          <p class="text-gray-300">
+            Cita rasa khas Nusantara yang cocok untuk semua makanan.
+          </p>
+        </div>
+
+        <div
+          class="bg-gradient-to-b from-red-900/40 to-black border border-red-700 rounded-3xl p-8 shadow-xl hover:scale-105 transition-all"
+        >
+          <div class="text-5xl mb-4">⭐</div>
+
+          <h3 class="text-2xl font-bold text-yellow-400 mb-3">
+            Kualitas Premium
+          </h3>
+
+          <p class="text-gray-300">
+            Menggunakan bahan berkualitas dengan proses higienis.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCT -->
+    <section
+      class="bg-gradient-to-r from-red-950 via-black to-red-950 py-20 border-y border-red-700"
+    >
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-14">
+          <h2 class="text-4xl font-black text-yellow-400 mb-4">
+            Produk Unggulan
+          </h2>
+
+          <p class="text-gray-300">
+            Pilihan sambal favorit pelanggan dengan rasa autentik & kualitas
+            premium.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- CARD -->
+          <div
+            class="bg-black border border-red-700 rounded-[2rem] overflow-hidden shadow-2xl hover:scale-105 transition-all"
+          >
+            <img src="lev 3.png" class="product-image w-full h-auto object-cover" />
+
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-yellow-400 mb-3">
+                Sambal Geprek Level 3
+              </h3>
+
+              <p class="text-gray-300 mb-6">
+                Pedas gurih cocok untuk ayam geprek & nasi hangat.
+              </p>
+            </div>
+          </div>
+
+          <!-- CARD -->
+          <div
+            class="bg-black border border-red-700 rounded-[2rem] overflow-hidden shadow-2xl hover:-translate-y-3 hover:scale-105 hover:shadow-red-500/40 transition-all duration-500"
+          >
+            <img src="lev 4.png"class="product-image w-full h-auto object-cover" />
+
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-yellow-400 mb-3">
+                Sambal Geprek Level 4
+              </h3>
+
+              <p class="text-gray-300 mb-6">
+                Pedas gurih cocok untuk ayam geprek & nasi hangat.
+              </p>
+            </div>
+          </div>
+
+          <!-- CARD -->
+          <div
+            class="bg-black border border-red-700 rounded-[2rem] overflow-hidden shadow-2xl hover:-translate-y-3 hover:scale-105 hover:shadow-red-500/40 transition-all duration-500"
+          >
+            <img src="lev 5.png" class="product-image w-full h-auto object-cover" />
+
+            <div class="p-6">
+              <h3 class="text-2xl font-bold text-yellow-400 mb-3">
+                Sambal Geprek Level 5
+              </h3>
+
+              <p class="text-gray-300 mb-6">
+                Pedas gurih cocok untuk ayam geprek & nasi hangat.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESELLER -->
+    <section id="reseller" class="max-w-7xl mx-auto px-6 py-20">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- LEFT -->
+        <div>
+          <div
+            class="inline-block bg-yellow-400 text-black px-4 py-2 rounded-full font-bold mb-4"
+          >
+            🚀 OPEN RESELLER
+          </div>
+
+          <h2 class="text-5xl font-black mb-6">
+            Join Jadi
+            <span class="text-yellow-400"> Reseller</span>
+          </h2>
+
+          <p class="text-gray-300 text-lg leading-relaxed mb-8">
+            Peluang usaha sambal kekinian dengan produk viral, modal terjangkau,
+            dan profit menarik.
+          </p>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div
+              class="bg-white/5 border border-white/10 rounded-2xl p-4 font-semibold"
+            >
+              💰 Profit Menarik
+            </div>
+
+            <div
+              class="bg-white/5 border border-white/10 rounded-2xl p-4 font-semibold"
+            >
+              📦 Pengiriman Aman
+            </div>
+
+            <div
+              class="bg-white/5 border border-white/10 rounded-2xl p-4 font-semibold"
+            >
+              🔥 Produk Viral
+            </div>
+
+            <div
+              class="bg-white/5 border border-white/10 rounded-2xl p-4 font-semibold"
+            >
+              📈 Repeat Order Tinggi
+            </div>
+          </div>
+        </div>
+
+        <!-- FORM -->
+        <!-- FORM RESELLER -->
+<div
+  class="bg-gradient-to-b from-red-900 to-black border border-red-700 rounded-[2rem] p-8 shadow-2xl"
+>
+  <h3 class="text-3xl font-black text-yellow-400 mb-6 text-center">
+    Form Pendaftaran Reseller
+  </h3>
+
+  <div class="space-y-4">
+    <!-- NAMA -->
+    <input
+      id="nama"
+      type="text"
+      placeholder="Nama Lengkap"
+      class="w-full bg-black border border-red-700 rounded-xl px-4 py-3 text-white"
+    />
+
+    <!-- NAMA USAHA -->
+    <input
+      id="usaha"
+      type="text"
+      placeholder="Nama Usaha / Toko"
+      class="w-full bg-black border border-red-700 rounded-xl px-4 py-3 text-white"
+    />
+
+    <!-- NOMOR HP -->
+    <input
+      id="wa"
+      type="text"
+      placeholder="Nomor WhatsApp"
+      class="w-full bg-black border border-red-700 rounded-xl px-4 py-3 text-white"
+    />
+
+    <!-- EMAIL -->
+    <input
+      id="email"
+      type="email"
+      placeholder="Email (Opsional)"
+      class="w-full bg-black border border-red-700 rounded-xl px-4 py-3 text-white"
+    />
+
+    <!-- KOTA -->
+    <input
+      id="kota"
+      type="text"
+      placeholder="Kota / Domisili"
+      class="w-full bg-black border border-red-700 rounded-xl px-4 py-3 text-white"
+    />
+
+    <!-- ALAMAT -->
+    <textarea
+      id="alamat"
+      rows="3"
+      placeholder="Alamat Lengkap"
+      class="w-full bg-black border border-red-700 rounded-xl px-4 py-3 text-white"
+    ></textarea>
+
+    <!-- PILIHAN PAKET -->
+    <select
+      id="paket"
+      class="w-full bg-black border border-red-700 rounded-xl px-4 py-3 text-white"
+    >
+      <option value="Paket 1">
+        Paket 1 — 10 pcs 
+        | Lv 3: 3 pcs • Lv 4: 4 pcs • Lv 5: 3 pcs
+      </option>
+      
+      <option value="Paket 2">
+        Paket 2 — 20 pcs + 1 Gratis 
+        | Lv 3: 7 pcs • Lv 4: 7 pcs • Lv 5: 7 pcs
+      </option>
+    </select>
+
+    <!-- METODE PEMBAYARAN -->
+    <select
+      id="payment"
+      class="w-full bg-black border border-red-700 rounded-xl px-4 py-3 text-white"
+    >
+      <option value="">Metode Pembayaran</option>
+      <option value="Transfer Bank">Transfer Bank</option>
+      <option value="COD">COD</option>
+    </select>
+
+    <!-- CATATAN -->
+    <textarea
+      id="catatan"
+      rows="3"
+      placeholder="Catatan Tambahan (Opsional)"
+      class="w-full bg-black border border-red-700 rounded-xl px-4 py-3 text-white"
+    ></textarea>
+
+    <!-- BUTTON -->
+    <button
+      onclick="kirimWhatsApp()"
+      class="w-full bg-yellow-400 hover:bg-yellow-500 text-black py-4 rounded-2xl font-black text-lg transition-all"
+    >
+      Gabung Sekarang 🔥
+    </button>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="mt-6 text-center text-gray-300 text-sm">
+    📞 WhatsApp: 081252926206
+  </div>
+</div>
+
+<!-- SCRIPT -->
+<script>
+  function kirimWhatsApp() {
+    const nama = document.getElementById("nama").value;
+    const usaha = document.getElementById("usaha").value;
+    const wa = document.getElementById("wa").value;
+    const email = document.getElementById("email").value;
+    const kota = document.getElementById("kota").value;
+    const alamat = document.getElementById("alamat").value;
+    const paket = document.getElementById("paket").value;
+    const payment = document.getElementById("payment").value;
+    const catatan = document.getElementById("catatan").value;
+
+    const nomorTujuan = "6281252926206";
+
+    const pesan = `🔥 FORM PENDAFTARAN RESELLER 🔥
+
+Nama : ${nama}
+Nama Usaha : ${usaha}
+WhatsApp : ${wa}
+Email : ${email}
+Kota : ${kota}
+Alamat : ${alamat}
+
+Paket Dipilih :
+${paket}
+
+Metode Pembayaran :
+${payment}
+
+Catatan :
+${catatan}
+
+Mohon info lengkap reseller 🙏`;
+
+    const url = `https://wa.me/${nomorTujuan}?text=${encodeURIComponent(
+      pesan
+    )}`;
+
+    window.open(url, "_blank");
+  }
+</script>
+    </section>
+
+    <!-- FOOTER -->
+    <footer
+      class="border-t border-red-700 py-8 text-center text-gray-400 text-sm"
+    >
+      © 2026 Sambalaku Nusantara — Pedasnya Juara, Cuannya Menggembira! 🌶
+    </footer>
+  </body>
+</html>
